@@ -1,0 +1,23 @@
+{
+    "name": "cerberu/jobs",
+    "type": "project",
+    "description": "Job Test For The Candidates",
+    "license": "proprietary",
+    "require": {
+        "php": "^7.2",
+        "ext-json": "*",
+        "twig/twig": "^2.0",
+        "twbs/bootstrap": "5.0.2"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
