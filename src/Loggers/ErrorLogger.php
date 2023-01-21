@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Logger;
+namespace App\Loggers;
 
 use App\Observer\ImportObservable;
 use App\Observer\ImportObserver;

@@ -7,7 +7,14 @@
         "php": "^7.2",
         "ext-json": "*",
         "twig/twig": "^2.0",
-        "twbs/bootstrap": "5.0.2"
+        "doctrine/orm": "^2.11.0",
+        "doctrine/dbal": "^3.2",
+        "symfony/cache": "^5.4",
+        "symfony/http-foundation": "^5.4",
+        "symfony/console": "^5.4",
+        "doctrine/annotations": "^2.0",
+        "symfony/framework-bundle": "^5.4",
+        "doctrine/cache": "^2.2"
     },
     "config": {
         "optimize-autoloader": true,

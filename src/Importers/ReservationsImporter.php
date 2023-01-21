@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Parser;
+namespace App\Importers;
 
 use App\Observer\ImportObservable;
 use App\Observer\ImportObserver;
