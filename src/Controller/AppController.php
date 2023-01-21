@@ -17,4 +17,12 @@ class AppController{
         echo $twig->render('index.html.twig',array("lolo" => "Texto" ));
 
     }
+
+    /**
+     * @Route("/import",name="import")
+     */
+    public function import(){
+
+        echo "Entro";
+    }
 }

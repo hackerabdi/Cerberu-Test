@@ -44,3 +44,15 @@
     flex: 0 0 auto;
     width: 66.66666667%;
 }
+
+.bd-example {
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+#spinner, #spinner1 { visibility:hidden; } 
+/*body.busy .spinner { visibility:visible !important; }*/

@@ -3,6 +3,12 @@
 {% block custom_styles %}
  <link href="assets/css/style.css" rel="stylesheet">
 {% endblock %}
+{% block vendorjs %}
+    <script src="assets/js/script.js" ></script>
+    <script type="text/javascript">
+
+    </script>
+{% endblock %}
 
 {% block content %}
 <div class="d-flex justify-content-center container container1">
@@ -11,16 +17,65 @@
 <div class="container">
     <!-- Top Component-->
     <div class="container themed-container">
-        <div class="mb-3">
-            <label for="formFile" class="form-label">Choose file to import data</label>
-            <input class="form-control" type="file" id="formFile">
+        <div class="row mb-3">            
+            <div class="col-sm-6 col-lg-9"> 
+                <input class="form-control" type="file" id="formFile" accept=".json,.xml" />
+            </div>
+            <div class="col-6 col-lg-3">
+                <button type="button" class="btn btn-primary" id="import">Import
+                    <span class="spinner-border spinner-border-sm" role="status" id="spinner" aria-hidden="true"></span>
+                    <span class="visually-hidden">Loading...</span>
+                </button>
+            </div>
+            
         </div>
     </div>
     <div class="row mb-3">
         <!-- Left Column-->
-        <div class="col-sm-6 col-lg-8 themed-grid-col">.col-sm-6 .col-lg-8</div>
+        <div class="col-sm-6 col-lg-8 themed-container">
+            <div class="row mb-3">
+                <div class="col-sm-6 col-lg-9">
+                    <label for="startDate">Start Date</label>
+                    <input id="startDate" class="form-control" type="text" />
+                </div>
+                <div class="col-sm-6 col-lg-9">
+                    <label for="endDate">End Date</label>
+                    <input id="endDate" class="form-control" type="text" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-6 col-lg-9 bd-example">
+                    <p>Pax: Min: 
+                        <span class="badge bg-secondary paxmin">0</span> - Avg: 
+                        <span class="badge bg-secondary paxavg">0</span> - Max: 
+                        <span class="badge bg-secondary paxmax">0</span>
+                    </p>
+                    <br/>
+                    <p>Total: Min: 
+                        <span class="badge bg-secondary totalmin">0</span>- Avg: 
+                        <span class="badge bg-secondary totalavg">0</span> - Max: 
+                        <span class="badge bg-secondary totalmax">0</span>
+                    </p>
+                    
+                </div>
+                
+                <div class="col-sm-6 col-lg-9 d-flex justify-content-center align-items-center">
+                    <div class="spinner-border" role="status" id="spinner1">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Right Column-->
-        <div class="col-6 col-lg-4 themed-grid-col">.col-6 .col-lg-4</div>
+        <div class="col-6 col-lg-4 themed-container">
+            <ul class="list-group">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A fourth item</li>
+                <li class="list-group-item">And a fifth one</li>
+            </ul>
+        </div>
     </div>
 </div>
 {% endblock %}
