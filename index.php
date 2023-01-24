@@ -13,6 +13,7 @@ use Twig\Environment;
 
 
 $loader = require __DIR__ . '/vendor/autoload.php';
+require __DIR__.'/config/bootstrap.php';
 
 // Specify our Twig templates location
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
@@ -27,11 +28,12 @@ $loader = new AnnotationDirectoryLoader(
     )
 );
 $routes = $loader->load(__DIR__ . '/src/Controller/');
+$request = Request::createFromGlobals();
 $context = new RequestContext();
-$context->fromRequest(Request::createFromGlobals());
+$context->fromRequest($request);
 $matcher = new UrlMatcher($routes, $context);
 $parameters = $matcher->match($context->getPathInfo());
 $controllerInfo = explode('::',$parameters['_controller']);
 $controller = new $controllerInfo[0];
 $action = $controllerInfo[1];
-$controller->$action($twig);
+$controller->$action($entityManager,$twig,$request);

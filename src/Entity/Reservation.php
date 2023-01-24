@@ -90,7 +90,7 @@ class Reservation
         return $this->pubDate;
     }
 
-    public function setPubDate(int $pubDate): void
+    public function setPubDate(\Datetime $pubDate): void
     {
         $this->pubDate = $pubDate;
     }

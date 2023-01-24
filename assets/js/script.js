@@ -1,5 +1,20 @@
 $(document).ready(function(){
 
+    var toastMixin = Swal.mixin({
+        toast: true,
+        icon: 'success',
+        title: 'General Title',
+        animation: false,
+        position: 'top-right',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      });
+
     $( "#startDate" ).datepicker({
         defaultDate: "+1w",
         changeMonth: true,
@@ -19,18 +34,38 @@ $(document).ready(function(){
         maxDate: '0'
       });
 
+    /* Begin importing files */  
     $('#import').on('click', function(){
         $('body').addClass('busy');
         $('#spinner').addClass('spinner');
-        uploadFile();
+        $("#logs").html('');
+        import_files();
     });
     
-    function uploadFile(){
+    function import_files(){
+     
         $.ajax({
             url: "/import",
             type: "POST",
-            data:  $("#formFile").val(),
+            success: function(data){
+                fillControl(jQuery.parseJSON(data));
+                $('body').removeClass('busy');
+                $('#spinner').removeClass('spinner');              
+            },
+            error: function(){
+
+            }
         });
     }
+    function fillControl(data){
+        data.forEach(element => {
+            $("#logs")
+            .append("<li class='list-group-item'>"+element['topic']+" - "+element['message']+"</li>");
+            $('#logs').find(".list-group-item:last").slideDown(20000);
+        });
+
+    }
+
+    /* End of importing files */
 
 });

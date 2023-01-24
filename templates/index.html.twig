@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block custom_styles %}
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css" rel="stylesheet">
  <link href="assets/css/style.css" rel="stylesheet">
 {% endblock %}
 {% block vendorjs %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js" ></script>
     <script src="assets/js/script.js" ></script>
-    <script type="text/javascript">
-
-    </script>
 {% endblock %}
 
 {% block content %}
@@ -18,9 +17,9 @@
     <!-- Top Component-->
     <div class="container themed-container">
         <div class="row mb-3">            
-            <div class="col-sm-6 col-lg-9"> 
+            <!--<div class="col-sm-6 col-lg-9"> 
                 <input class="form-control" type="file" id="formFile" accept=".json,.xml" />
-            </div>
+            </div> !-->
             <div class="col-6 col-lg-3">
                 <button type="button" class="btn btn-primary" id="import">Import
                     <span class="spinner-border spinner-border-sm" role="status" id="spinner" aria-hidden="true"></span>
@@ -32,7 +31,7 @@
     </div>
     <div class="row mb-3">
         <!-- Left Column-->
-        <div class="col-sm-6 col-lg-8 themed-container">
+        <div class="col-sm-6 col-lg-6 themed-container">
             <div class="row mb-3">
                 <div class="col-sm-6 col-lg-9">
                     <label for="startDate">Start Date</label>
@@ -45,13 +44,13 @@
             </div>
             <div class="row mb-3">
                 <div class="col-sm-6 col-lg-9 bd-example">
-                    <p>Pax: Min: 
+                    <p><b>Pax</b>: Min: 
                         <span class="badge bg-secondary paxmin">0</span> - Avg: 
                         <span class="badge bg-secondary paxavg">0</span> - Max: 
                         <span class="badge bg-secondary paxmax">0</span>
                     </p>
                     <br/>
-                    <p>Total: Min: 
+                    <p><b>Total</b>: Min: 
                         <span class="badge bg-secondary totalmin">0</span>- Avg: 
                         <span class="badge bg-secondary totalavg">0</span> - Max: 
                         <span class="badge bg-secondary totalmax">0</span>
@@ -67,14 +66,8 @@
             </div>
         </div>
         <!-- Right Column-->
-        <div class="col-6 col-lg-4 themed-container">
-            <ul class="list-group">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
-            </ul>
+        <div class="col-6 col-lg-6 container themed-container logs">
+            <ul class="list-group" id="logs"></ul>
         </div>
     </div>
 </div>
