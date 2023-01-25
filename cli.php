@@ -15,7 +15,7 @@ require __DIR__.'/config/bootstrap.php';
  */
 
 do {
-    $cmd = trim(strtolower( readline("\n> Command: ") ));
+    $cmd = trim(strtolower( readline("\n> Enter Command('exit', 'import', 'getdata'): ") ));
     readline_add_history($cmd);
     switch ($cmd) {
         case 'import': 
