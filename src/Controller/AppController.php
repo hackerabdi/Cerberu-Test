@@ -26,7 +26,7 @@ class AppController {
      */
     public function import(EntityManager $entityManager,Environment $twig, Request $request)
     {
-        $obj  = new Importer(dirname(__DIR__, 2)."/files/");//Si se desea esta url puede venir desde la interfaz de usuario
+        $obj  = new Importer(dirname(__DIR__, 2)."/files/");//Url can be sent from the UI
         $logs = $obj->entrance($entityManager); 
         echo json_encode($logs);  
     }
