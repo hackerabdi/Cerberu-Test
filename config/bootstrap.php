@@ -17,8 +17,8 @@ $config = ORMSetup::createAnnotationMetadataConfiguration(
 // configuring the database connection
 $connection = DriverManager::getConnection([
     'driver'   => 'pdo_mysql',
-    'user'     => 'root',
-    'password' => 'founder',
+    'user'     => 'user',
+    'password' => 'pass',
     'dbname'   => 'test',
 ], $config);
 

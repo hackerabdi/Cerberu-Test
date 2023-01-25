@@ -2,6 +2,6 @@ doctrine:
     dbal:
         dbname: test
         host: localhost
-        user: root
-        password: founder
+        user: user
+        password: pass
         driver: pdo_mysql
