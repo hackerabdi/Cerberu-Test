@@ -55,7 +55,7 @@
 }
 
 #spinner, #spinner1 { visibility:hidden; } 
-/*body.busy .spinner { visibility:visible !important; }*/
+body.busy .spinner { visibility:visible !important; }
 
 .logs{
     height: 300px;

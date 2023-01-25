@@ -22,8 +22,6 @@
             </div> !-->
             <div class="col-6 col-lg-3">
                 <button type="button" class="btn btn-primary" id="import">Import
-                    <span class="spinner-border spinner-border-sm" role="status" id="spinner" aria-hidden="true"></span>
-                    <span class="visually-hidden">Loading...</span>
                 </button>
             </div>
             
@@ -35,15 +33,15 @@
             <div class="row mb-3">
                 <div class="col-sm-6 col-lg-9">
                     <label for="startDate">Start Date</label>
-                    <input id="startDate" class="form-control" type="text" />
+                    <input id="startDate" class="form-control" type="text" autocomplete="off" />
                 </div>
                 <div class="col-sm-6 col-lg-9">
                     <label for="endDate">End Date</label>
-                    <input id="endDate" class="form-control" type="text" />
+                    <input id="endDate" class="form-control" type="text" readonly />
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col-sm-6 col-lg-9 bd-example">
+                <div class="col-sm-9 col-lg-9 bd-example">
                     <p><b>Pax</b>: Min: 
                         <span class="badge bg-secondary paxmin">0</span> - Avg: 
                         <span class="badge bg-secondary paxavg">0</span> - Max: 
@@ -58,8 +56,8 @@
                     
                 </div>
                 
-                <div class="col-sm-6 col-lg-9 d-flex justify-content-center align-items-center">
-                    <div class="spinner-border" role="status" id="spinner1">
+                <div class="col-sm-3 col-lg-3 d-flex justify-content-center align-items-center">
+                    <div class="spinner-border" role="status" id="spinner" aria-hidden="true">
                         <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>

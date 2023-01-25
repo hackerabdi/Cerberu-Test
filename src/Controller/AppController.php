@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManager;
 use Twig\Environment;
 
 use App\Lib\Importer;
-use App\Lib\ReservationProcess;
+use App\Lib\ProcessData;
 
 class AppController {   
 
@@ -26,17 +26,20 @@ class AppController {
      */
     public function import(EntityManager $entityManager,Environment $twig, Request $request)
     {
-        $obj  = new Importer(dirname(__DIR__, 2)."/files/");
+        $obj  = new Importer(dirname(__DIR__, 2)."/files/");//Si se desea esta url puede venir desde la interfaz de usuario
         $logs = $obj->entrance($entityManager); 
         echo json_encode($logs);  
     }
 
     /**
-     * @Route("/import",name="import")
+     * @Route("/filter_data",name="filter_data")
      */
-    public function data(EntityManager $entityManager,Environment $twig, Request $request)
+    public function filterData(EntityManager $entityManager,Environment $twig, Request $request)
     {
-        
+        $req  = $request->request;//get parameters
+        $processData = new ProcessData($entityManager);
+        $res = $processData->process($req->get('startDate'),$req->get('endDate'));
+        echo json_encode($res);
     }
 
 }
