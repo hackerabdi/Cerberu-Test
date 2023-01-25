@@ -56,27 +56,37 @@ class Importer extends ReservationsImporter
     {
         
         foreach($this->options as $option){
-            $this->addLog(self::START_IMPORTING, $option." importation");
-            $path = $this->getFilePath()."reservations.".$option;
-            if(!filesize($path)){ 
-                $this->addLog(self::FILE_NOT_FOUND, "reservations.".$option." has not been found");
-                break;
-            }
-            elseif(filesize($path) == 0){
-                $this->addLog(self::FILE_EMPTY, "reservations.".$option." exists, but is empty");
-                break; 
-            }
-            else{
-                $res = [];
-                if($option == "json")
-                    $obj = new ProcessJson();                
-                else
-                    $obj = new ProcessXml();
+            try{
+                $this->addLog(self::START_IMPORTING, $option." importation");
+                $path = $this->getFilePath()."reservations.".$option;
+                if(!filesize($path)){ 
+                    $this->addLog(self::FILE_NOT_FOUND, "reservations.".$option." has not been found");
+                    break;
+                }
+                elseif(filesize($path) == 0){
+                    $this->addLog(self::FILE_EMPTY, "reservations.".$option." exists, but is empty");
+                    break; 
+                }
+                else{
+                    $res = [];
+                    if($option == "json")
+                        $obj = new ProcessJson();                
+                    else
+                        $obj = new ProcessXml();
 
-                $this->reservationProcess->process($obj->getData($path));
-                
+                    $this->reservationProcess->process($obj->getData($path));
+                    
+                }
+                $this->addLog(self::END_IMPORTING, $option." importation");
             }
-            $this->addLog(self::END_IMPORTING, $option." importation");
+            catch(MyCustomException $e){
+                $this->importer->addLog(Importer::RESERVATION_DUPLICATED,$e->getMessage());
+                continue;
+            } 
+            catch(\Exception $e){
+                $this->importer->addLog(Importer::SYSTEM_ERROR,$e->getMessage());
+                continue;
+            } 
         }
     }
 

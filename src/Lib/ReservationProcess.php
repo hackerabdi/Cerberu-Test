@@ -41,7 +41,7 @@ class ReservationProcess
                 catch(\Exception $e){
                     $this->importer->addLog(Importer::SYSTEM_ERROR,$e->getMessage());
                     continue;
-                }               
+                }                             
             }
             $this->createReservation($reservation);
         }
